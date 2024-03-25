@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Call REST API</title>
+</head>
+<body>
+    <button id="get-data-button">Get Data</button>
+    <p id="data-output"></p>
+
+    <script>
+    const button = document.getElementById('get-data-button');
+    const outputElement = document.getElementById('data-output');
+
+    button.addEventListener('click', async () => {
+      try {
+          const response = await fetch('https://localhost:7202/RandomName/API/ViewReport'); // Replace with your API URL
+        const data = await response.json(); // Parse JSON response
+        outputElement.textContent = JSON.stringify(data, null, 2); // Display formatted JSON data
+      } catch (error) {
+        outputElement.textContent = `Error: ${error}`;
+      }
+    });
+    </script>
+</body>
+</html>
